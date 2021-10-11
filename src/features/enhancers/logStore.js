@@ -3,9 +3,9 @@ export const logStore = (createStore) => {
         const store = createStore(rootReducer, preloadedState, enhancers)
 
         function newDispatch(action) {
-            const result = store.dispatch(action);
-            console.log(store.getState());
-            return result;
+            const result = store.dispatch(action)
+            console.log(store.getState())
+            return result
         }
 
         return { ...store, dispatch: newDispatch }

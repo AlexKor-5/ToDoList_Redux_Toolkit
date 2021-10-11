@@ -16,9 +16,9 @@ function App() {
                 <section className="medium-container">
                     <h2>Todos</h2>
                     <div className="todoapp">
-                        <Header/>
-                        <TodoList/>
-                        <Footer/>
+                        <Header />
+                        <TodoList />
+                        <Footer />
                     </div>
                 </section>
             </main>
@@ -26,4 +26,4 @@ function App() {
     )
 }
 
-export default App;
+export default App

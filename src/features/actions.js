@@ -1,52 +1,52 @@
-import {constants} from "./constants";
+import { constants } from './constants'
 
-export const changeInput = (value = "") => ({
+export const changeInput = (value = '') => ({
     type: constants.changeInput,
     payload: value
-});
+})
 
-export const addToDo = (todoText = "") => ({
+export const addToDo = (todoText = '') => ({
     type: constants.addToDo,
     payload: todoText
-});
+})
 
 export const markCompleted = (id, value = false) => ({
     type: constants.markCompleted,
-    payload: {id, value: !value}
-});
+    payload: { id, value: !value }
+})
 
 export const deleteToDo = (id) => ({
     type: constants.deleteToDo,
-    payload: {id}
-});
+    payload: { id }
+})
 
 export const addColor = (id, newColorValue) => ({
     type: constants.addColor,
-    payload: {id, newColorValue}
-});
+    payload: { id, newColorValue }
+})
 
 export const markAllCompleted = () => ({
     type: constants.markAllCompleted,
     payload: true
-});
+})
 
 export const clearCompleted = (id = []) => ({
     type: constants.clearCompleted,
-    payload: {id}
-});
+    payload: { id }
+})
 export const clearInput = () => ({
     type: constants.clearInput,
-    payload: ""
-});
+    payload: ''
+})
 export const changeFilterStatus = (value) => ({
     type: constants.changeFilterStatus,
     payload: value
-});
+})
 export const addColorToFilter = (color) => ({
     type: constants.addColorToFilter,
     payload: color
-});
+})
 export const removeColorInFilter = (color) => ({
     type: constants.removeColorInFilter,
     payload: color
-});
+})

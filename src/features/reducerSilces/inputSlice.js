@@ -1,8 +1,8 @@
-import {initialInputState} from "../initialState";
-import {createSlice} from "@reduxjs/toolkit";
+import { initialInputState } from '../initialState'
+import { createSlice } from '@reduxjs/toolkit'
 
 const inputReducer = createSlice({
-    name: "input",
+    name: 'input',
     initialState: initialInputState,
     reducers: {
         changeInput(state, action) {
@@ -13,5 +13,5 @@ const inputReducer = createSlice({
         }
     }
 })
-export const {changeInput, clearInput} = inputReducer.actions
+export const { changeInput, clearInput } = inputReducer.actions
 export default inputReducer.reducer

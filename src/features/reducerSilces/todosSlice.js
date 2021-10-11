@@ -1,6 +1,6 @@
-import {initialToDosState} from "../initialState";
-import {v4 as uuidv4} from 'uuid';
-import {createSlice} from "@reduxjs/toolkit";
+import { initialToDosState } from '../initialState'
+import { v4 as uuidv4 } from 'uuid'
+import { createSlice } from '@reduxjs/toolkit'
 
 const todosReducer = createSlice({
     name: 'todos',
@@ -8,7 +8,7 @@ const todosReducer = createSlice({
     reducers: {
         addToDo: {
             reducer(state, action) {
-                const {uniqueId, text} = action.payload
+                const { uniqueId, text } = action.payload
                 return [
                     ...state,
                     {
@@ -20,7 +20,7 @@ const todosReducer = createSlice({
             },
             prepare(text) {
                 return {
-                    payload: {uniqueId: uuidv4(), text}
+                    payload: { uniqueId: uuidv4(), text }
                 }
             }
         },
@@ -39,7 +39,7 @@ const todosReducer = createSlice({
             },
             prepare(id, completed) {
                 return {
-                    payload: {id, completed}
+                    payload: { id, completed }
                 }
             }
         },
@@ -48,7 +48,7 @@ const todosReducer = createSlice({
             return state.filter((item) => item.id !== elemId)
         },
         addColor(state, action) {
-            return state.map(item => {
+            return state.map((item) => {
                 if (item.id === action.payload.id) {
                     return {
                         ...item,
@@ -60,15 +60,25 @@ const todosReducer = createSlice({
             })
         },
         markAllCompleted(state, action) {
-            return state.map(todo => ({...todo, completed: action.payload}))
+            return state.map((todo) => ({
+                ...todo,
+                completed: action.payload
+            }))
         },
         clearCompleted(state, action) {
-            return state.filter(todo => {
-                return !action.payload.some(id => id === todo.id)
+            return state.filter((todo) => {
+                return !action.payload.some((id) => id === todo.id)
             })
         }
     }
 })
 
-export const {addToDo, markCompleted, deleteToDo, addColor, markAllCompleted, clearCompleted} = todosReducer.actions
+export const {
+    addToDo,
+    markCompleted,
+    deleteToDo,
+    addColor,
+    markAllCompleted,
+    clearCompleted
+} = todosReducer.actions
 export default todosReducer.reducer
