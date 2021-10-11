@@ -4,6 +4,8 @@ import Header from './features/header/Header'
 import TodoList from './features/todos/TodoList'
 import Footer from './features/footer/Footer'
 
+//Definition for rule 'jsx-a11y/rule-name' was not found
+
 function App() {
     return (
         <div className="App">
