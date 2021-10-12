@@ -1,33 +1,27 @@
-import React from 'react'
-// import { changeInput, clearInput } from '../reducerSilces/inputSlice'
-// import { addToDo } from '../reducerSilces/todosSlice'
-// import { useSelector, useDispatch } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addTodo } from '../reducerSlices/todosReducer'
 
 const Header = () => {
-    // const inputValue = useSelector(state => state.input)
-    // const dispatch = useDispatch()
+    const [inputText, setInputText] = useState('')
+    const dispatch = useDispatch()
 
-    const pressEnter = e => {
+    const pressEnter = (e, text) => {
         if (e.keyCode === 13) {
-            // dispatch(addToDo(inputValue))
-            // dispatch(clearInput(''))
+            console.log(text)
+            dispatch(addTodo(text))
+            setInputText('')
         }
     }
-
-    // const truly = useMemo(() => ({ value: false }), [])
-
-    // const inputValueAction = inputValue => {
-    //     let temper = inputValue
-    //     if (!truly.value) {
-    //         temper = ''
-    //     }
-    //     truly.value = true
-    //     return temper
-    // }
-
     return (
         <header className="header">
-            <input className="new-todo" placeholder={''} onKeyUp={pressEnter} />
+            <input
+                className="new-todo"
+                placeholder={'What needs to be done!'}
+                onKeyUp={e => pressEnter(e, inputText)}
+                onInput={e => setInputText(e.target.value)}
+                value={inputText}
+            />
         </header>
     )
 }
