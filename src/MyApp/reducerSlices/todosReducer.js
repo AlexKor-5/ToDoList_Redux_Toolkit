@@ -12,12 +12,11 @@ const todosSlice = createSlice({
         addTodo: {
             reducer(state, action) {
                 const id = action.payload.id
-                state.ids.push(id)
-                state.entities[id] = {
+                todosAdapter.addOne(state, {
                     id: id,
                     text: action.payload.text,
                     completed: false
-                }
+                })
             },
             prepare(text) {
                 return {
