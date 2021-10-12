@@ -5,7 +5,7 @@ export default function useStatus() {
     const dispatch = useDispatch()
     return [
         {
-            onClick: (e) => dispatch(changeFilterStatus(e.target.innerHTML))
+            onClick: e => dispatch(changeFilterStatus(e.target.innerHTML))
         }
     ]
 }

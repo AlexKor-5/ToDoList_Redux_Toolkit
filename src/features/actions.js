@@ -15,7 +15,7 @@ export const markCompleted = (id, value = false) => ({
     payload: { id, value: !value }
 })
 
-export const deleteToDo = (id) => ({
+export const deleteToDo = id => ({
     type: constants.deleteToDo,
     payload: { id }
 })
@@ -38,15 +38,15 @@ export const clearInput = () => ({
     type: constants.clearInput,
     payload: ''
 })
-export const changeFilterStatus = (value) => ({
+export const changeFilterStatus = value => ({
     type: constants.changeFilterStatus,
     payload: value
 })
-export const addColorToFilter = (color) => ({
+export const addColorToFilter = color => ({
     type: constants.addColorToFilter,
     payload: color
 })
-export const removeColorInFilter = (color) => ({
+export const removeColorInFilter = color => ({
     type: constants.removeColorInFilter,
     payload: color
 })

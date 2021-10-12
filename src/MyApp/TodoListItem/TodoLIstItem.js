@@ -12,12 +12,12 @@ const TodoListItem = ({ todo }) => {
     const dispatch = useDispatch()
     const { text, id } = todo
     const completed = useSelector(
-        (state) => state.todos.find((item) => item.id === id).completed
+        state => state.todos.find(item => item.id === id).completed
     )
     const colorNames = setOfColors
-    const colors = useSelector((state) => state.filters.filterColors)
+    const colors = useSelector(state => state.filters.filterColors)
 
-    const colorSetter = (e) => {
+    const colorSetter = e => {
         dispatch(addColor({ id, newColorValue: e.target.value }))
     }
 

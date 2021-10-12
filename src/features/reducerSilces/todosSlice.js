@@ -26,7 +26,7 @@ const todosReducer = createSlice({
         },
         markCompleted: {
             reducer(state, action) {
-                return state.map((item) => {
+                return state.map(item => {
                     if (item.id === action.payload.id) {
                         return {
                             ...item,
@@ -45,10 +45,10 @@ const todosReducer = createSlice({
         },
         deleteToDo(state, action) {
             const elemId = action.payload
-            return state.filter((item) => item.id !== elemId)
+            return state.filter(item => item.id !== elemId)
         },
         addColor(state, action) {
-            return state.map((item) => {
+            return state.map(item => {
                 if (item.id === action.payload.id) {
                     return {
                         ...item,
@@ -60,25 +60,18 @@ const todosReducer = createSlice({
             })
         },
         markAllCompleted(state, action) {
-            return state.map((todo) => ({
+            return state.map(todo => ({
                 ...todo,
                 completed: action.payload
             }))
         },
         clearCompleted(state, action) {
-            return state.filter((todo) => {
-                return !action.payload.some((id) => id === todo.id)
+            return state.filter(todo => {
+                return !action.payload.some(id => id === todo.id)
             })
         }
     }
 })
 
-export const {
-    addToDo,
-    markCompleted,
-    deleteToDo,
-    addColor,
-    markAllCompleted,
-    clearCompleted
-} = todosReducer.actions
+export const { addToDo, markCompleted, deleteToDo, addColor, markAllCompleted, clearCompleted } = todosReducer.actions
 export default todosReducer.reducer

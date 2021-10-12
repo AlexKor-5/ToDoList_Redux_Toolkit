@@ -20,14 +20,11 @@ const filtersReducer = createSlice({
         removeColorInFilter(state, action) {
             return {
                 ...state,
-                filterColors: state.filterColors.filter(
-                    (color) => color !== action.payload
-                )
+                filterColors: state.filterColors.filter(color => color !== action.payload)
             }
         }
     }
 })
 
-export const { changeFilterStatus, addColorToFilter, removeColorInFilter } =
-    filtersReducer.actions
+export const { changeFilterStatus, addColorToFilter, removeColorInFilter } = filtersReducer.actions
 export default filtersReducer.reducer

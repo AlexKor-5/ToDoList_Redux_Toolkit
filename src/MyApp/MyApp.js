@@ -1,15 +1,15 @@
 import React from 'react'
 
-import Header from './features/header/Header'
-import TodoList from './features/todos/TodoList'
-import Footer from './features/footer/Footer'
+import Header from './Header/Header'
+import TodoList from './TodoList/TodoList'
+import Footer from './Footer/Footer'
 
 function App() {
     return (
         <div className="App">
             <nav>
                 <section>
-                    <h1>Redux Fundamentals Example</h1>
+                    <h1>My Using Redux Toolkit Example</h1>
                 </section>
             </nav>
             <main>

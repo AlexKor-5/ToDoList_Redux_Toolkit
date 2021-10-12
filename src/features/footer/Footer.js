@@ -18,8 +18,8 @@ const RemainingTodos = ({ count }) => {
 }
 
 const StatusFilter = () => {
-    const selectCountOfStatuses = (state) => state.filters.filterCountOfStatuses
-    const selectCurrentStatus = (state) => state.filters.filterStatus
+    const selectCountOfStatuses = state => state.filters.filterCountOfStatuses
+    const selectCurrentStatus = state => state.filters.filterStatus
     const statuses = useSelector(selectCountOfStatuses)
     const currentStatus = useSelector(selectCurrentStatus)
     const [statusData] = useStatus()
@@ -49,7 +49,7 @@ const StatusFilter = () => {
 
 const ColorFilters = () => {
     const dispatch = useDispatch()
-    const colors = useSelector((state) => state.filters.filterColors)
+    const colors = useSelector(state => state.filters.filterColors)
 
     const addColor = (color, checked) => {
         if (!checked) dispatch(addColorToFilter(color))
@@ -93,18 +93,18 @@ const ColorFilters = () => {
 const Footer = () => {
     const dispatch = useDispatch()
 
-    const selectIds = (state) => {
+    const selectIds = state => {
         let arrIds = []
-        let completedToDos = state.todos.filter((todo) => todo.completed)
+        let completedToDos = state.todos.filter(todo => todo.completed)
         if (completedToDos.length !== 0) {
-            arrIds = completedToDos.map((todo) => todo.id)
+            arrIds = completedToDos.map(todo => todo.id)
         }
         return arrIds
     }
 
-    const selectNumberOfRemainingToDos = (state) => {
+    const selectNumberOfRemainingToDos = state => {
         let count = 0
-        state.todos.forEach((todo) => {
+        state.todos.forEach(todo => {
             if (!todo.completed) count++
         })
         return count

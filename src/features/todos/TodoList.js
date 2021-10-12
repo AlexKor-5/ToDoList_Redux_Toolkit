@@ -2,21 +2,21 @@ import React from 'react'
 import TodoListItem from './TodoListItem'
 import { useSelector } from 'react-redux'
 
-const selectTodos = (state) => state.todos
-const selectFilterStatus = (state) => state.filters.filterStatus
-const selectColors = (state) => state.filters.filterColors
+const selectTodos = state => state.todos
+const selectFilterStatus = state => state.filters.filterStatus
+const selectColors = state => state.filters.filterColors
 
 const TodoList = () => {
     const todos = useSelector(selectTodos)
     const status = useSelector(selectFilterStatus)
     const colors = useSelector(selectColors)
 
-    const todo = (item) => <TodoListItem key={item.id} todo={item} />
+    const todo = item => <TodoListItem key={item.id} todo={item} />
 
-    const renderToDos = (status, renderCallback = (f) => f) => {
+    const renderToDos = (status, renderCallback = f => f) => {
         if (status === 'All') {
             return () =>
-                todos.map((item) => {
+                todos.map(item => {
                     if (colors.length !== 0) {
                         if (!colors.includes(item.color)) return false
                     }
@@ -24,7 +24,7 @@ const TodoList = () => {
                 })
         } else if (status === 'Active') {
             return () =>
-                todos.map((item) => {
+                todos.map(item => {
                     if (item.completed) return false
                     if (colors.length !== 0) {
                         if (!colors.includes(item.color)) return false
@@ -33,7 +33,7 @@ const TodoList = () => {
                 })
         } else if (status === 'Completed') {
             return () =>
-                todos.map((item) => {
+                todos.map(item => {
                     if (!item.completed) return false
                     if (colors.length !== 0) {
                         if (!colors.includes(item.color)) return false
@@ -42,7 +42,7 @@ const TodoList = () => {
                 })
         } else {
             return () =>
-                todos.map((item) => {
+                todos.map(item => {
                     if (colors.length !== 0) {
                         if (!colors.includes(item.color)) return false
                     }

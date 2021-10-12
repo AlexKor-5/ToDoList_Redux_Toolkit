@@ -1,4 +1,4 @@
-export const logStore = (createStore) => {
+export const logStore = createStore => {
     return (rootReducer, preloadedState, enhancers) => {
         const store = createStore(rootReducer, preloadedState, enhancers)
 
