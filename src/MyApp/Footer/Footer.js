@@ -68,10 +68,7 @@ const ColorFilters = ({ color = '#000000' }) => {
                         checked={checked}
                         onChange={() => addColor(color, checked)}
                     />
-                    <span
-                        className="color-block"
-                        style={{ backgroundColor: color }}
-                    >
+                    <span className="color-block" style={{ backgroundColor: color }}>
                         {''}
                     </span>
                     {color}
@@ -83,9 +80,7 @@ const ColorFilters = ({ color = '#000000' }) => {
     return (
         <div className="filters colorFilters">
             <h5>Filter by Color</h5>
-            <form className="colorSelection">
-                {/*{displaySetOfColors(setOfColors, colors)}*/}
-            </form>
+            <form className="colorSelection">{/*{displaySetOfColors(setOfColors, colors)}*/}</form>
         </div>
     )
 }

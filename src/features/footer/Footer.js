@@ -1,10 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { markAllCompleted, clearCompleted } from '../reducerSilces/todosSlice'
-import {
-    addColorToFilter,
-    removeColorInFilter
-} from '../reducerSilces/filtersSlice'
+import { addColorToFilter, removeColorInFilter } from '../reducerSilces/filtersSlice'
 import useStatus from '../hooks/useStatus'
 import setOfColors from '../data-colors'
 
@@ -28,10 +25,7 @@ const StatusFilter = () => {
         return statuses.map((status, index) => {
             return (
                 <li key={index}>
-                    <button
-                        {...statusData}
-                        className={currentStatus === status ? 'selected' : ''}
-                    >
+                    <button {...statusData} className={currentStatus === status ? 'selected' : ''}>
                         {status}
                     </button>
                 </li>
@@ -68,10 +62,7 @@ const ColorFilters = () => {
                         checked={checked}
                         onChange={() => addColor(color, checked)}
                     />
-                    <span
-                        className="color-block"
-                        style={{ backgroundColor: color }}
-                    >
+                    <span className="color-block" style={{ backgroundColor: color }}>
                         {''}
                     </span>
                     {color}
@@ -83,9 +74,7 @@ const ColorFilters = () => {
     return (
         <div className="filters colorFilters">
             <h5>Filter by Color</h5>
-            <form className="colorSelection">
-                {displaySetOfColors(setOfColors, colors)}
-            </form>
+            <form className="colorSelection">{displaySetOfColors(setOfColors, colors)}</form>
         </div>
     )
 }
@@ -116,16 +105,10 @@ const Footer = () => {
         <footer className="footer">
             <div className="actions">
                 <h5>Actions</h5>
-                <button
-                    className="button"
-                    onClick={() => dispatch(markAllCompleted(true))}
-                >
+                <button className="button" onClick={() => dispatch(markAllCompleted(true))}>
                     Mark All Completed
                 </button>
-                <button
-                    className="button"
-                    onClick={() => dispatch(clearCompleted(ids))}
-                >
+                <button className="button" onClick={() => dispatch(clearCompleted(ids))}>
                     Clear Completed
                 </button>
             </div>

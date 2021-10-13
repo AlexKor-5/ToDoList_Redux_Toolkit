@@ -73,5 +73,6 @@ const todosReducer = createSlice({
     }
 })
 
-export const { addToDo, markCompleted, deleteToDo, addColor, markAllCompleted, clearCompleted } = todosReducer.actions
+export const { addToDo, markCompleted, deleteToDo, addColor, markAllCompleted, clearCompleted } =
+    todosReducer.actions
 export default todosReducer.reducer
