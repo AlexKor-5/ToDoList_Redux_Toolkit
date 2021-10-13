@@ -26,17 +26,23 @@ const todosSlice = createSlice({
         },
         markCompleted(state, action) {
             const { id, completed } = action.payload
-            // state.entities[id].completed = !completed
             todosAdapter.updateOne(state, { id, changes: { completed: !completed } })
+        },
+        removeTodo(state, action) {
+            todosAdapter.removeOne(state, action.payload)
+        },
+        addColor(state, action) {
+            const { id, color } = action.payload
+            todosAdapter.updateOne(state, { id, changes: { color } })
         }
     }
 })
-export const { addTodo, markCompleted } = todosSlice.actions
+export const { addTodo, markCompleted, removeTodo, addColor } = todosSlice.actions
 export const {
     selectAll: selectAllTodos,
-    selectTotal,
-    selectIds,
-    selectEntities,
-    selectById
+    selectTotal: selectTotalTodos,
+    selectIds: selectIdsTodos,
+    selectEntities: selectEntitiesTodos,
+    selectById: selectByIdTodos
 } = todosAdapter.getSelectors(state => state.todos)
 export default todosSlice.reducer

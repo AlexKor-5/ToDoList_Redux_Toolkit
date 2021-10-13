@@ -2,16 +2,18 @@ import React, { useState } from 'react'
 import { ReactComponent as TimesSolid } from './times-solid.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import setOfColors from '../data-colors'
-import { markCompleted, selectById } from '../reducerSlices/todosReducer'
+import { addColor, markCompleted, removeTodo, selectByIdTodos } from '../reducerSlices/todosReducer'
 
 const TodoListItem = ({ id }) => {
     console.log('TodolistItem render')
-    const todo = useSelector(state => selectById(state, id))
+    const todo = useSelector(state => selectByIdTodos(state, id))
     const { text, color, completed } = todo
     const [inputColor, setInputColor] = useState(color)
     const dispatch = useDispatch()
 
     const displayColorNames = (setOfColors = []) => {
+        if (!Array.isArray(setOfColors)) return
+
         return setOfColors.map((color, index) => {
             return (
                 <option key={index} value={color}>
@@ -19,6 +21,13 @@ const TodoListItem = ({ id }) => {
                 </option>
             )
         })
+    }
+
+    const insertColorToStates = (e, id = '') => {
+        // console.log(e instanceof Object ? 'true' : 'false')
+
+        setInputColor(e.target.value)
+        dispatch(addColor({ id, color: e.target.value }))
     }
 
     return (
@@ -39,18 +48,13 @@ const TodoListItem = ({ id }) => {
                     <select
                         className="colorPicker"
                         defaultValue={color}
-                        onChange={e => setInputColor(e.target.value)}
+                        onChange={e => insertColorToStates(e, id)}
                         style={{ color: inputColor }}
                     >
                         {displayColorNames(setOfColors)}
                     </select>
 
-                    <button
-                        className="destroy"
-                        onClick={() => {
-                            console.log('cross')
-                        }}
-                    >
+                    <button className="destroy" onClick={() => dispatch(removeTodo(id))}>
                         <TimesSolid />
                     </button>
                 </div>
@@ -59,4 +63,4 @@ const TodoListItem = ({ id }) => {
     )
 }
 
-export default TodoListItem
+export default React.memo(TodoListItem)
