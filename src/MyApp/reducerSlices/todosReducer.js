@@ -1,4 +1,4 @@
-import { createSlice, createEntityAdapter, createSelector } from '@reduxjs/toolkit'
+import { createSlice, createEntityAdapter, createSelector, current } from '@reduxjs/toolkit'
 import { initialToDosState } from '../initialStates/initialStates'
 import { v4 } from 'uuid'
 
@@ -23,13 +23,15 @@ const todosSlice = createSlice({
                     payload: { id: v4(), text }
                 }
             }
+        },
+        markCompleted(state, action) {
+            const { id, completed } = action.payload
+            // state.entities[id].completed = !completed
+            todosAdapter.updateOne(state, { id, changes: { completed: !completed } })
         }
     }
 })
-export const { addTodo } = todosSlice.actions
-
-const selectTodos = state => Object.values(state.entities)
-
+export const { addTodo, markCompleted } = todosSlice.actions
 export const {
     selectAll: selectAllTodos,
     selectTotal,
@@ -37,7 +39,4 @@ export const {
     selectEntities,
     selectById
 } = todosAdapter.getSelectors(state => state.todos)
-
-console.log(todosAdapter.getSelectors())
-
 export default todosSlice.reducer

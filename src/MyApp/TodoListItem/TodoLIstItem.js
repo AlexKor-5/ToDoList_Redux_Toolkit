@@ -1,22 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ReactComponent as TimesSolid } from './times-solid.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import setOfColors from '../data-colors'
-import { markCompleted, deleteToDo, addColor } from '../reducerSilces/todosSlice'
+import { markCompleted, selectById } from '../reducerSlices/todosReducer'
 
-const TodoListItem = ({ todo }) => {
+const TodoListItem = ({ id }) => {
+    console.log('TodolistItem render')
+    const todo = useSelector(state => selectById(state, id))
+    const { text, color, completed } = todo
+    const [inputColor, setInputColor] = useState(color)
     const dispatch = useDispatch()
-    const { text, id } = todo
-    const completed = useSelector(state => state.todos.find(item => item.id === id).completed)
-    const colorNames = setOfColors
-    const colors = useSelector(state => state.filters.filterColors)
 
-    const colorSetter = e => {
-        dispatch(addColor({ id, newColorValue: e.target.value }))
-    }
-
-    const displayColorOptions = () => {
-        return colorNames.map((color, index) => {
+    const displayColorNames = (setOfColors = []) => {
+        return setOfColors.map((color, index) => {
             return (
                 <option key={index} value={color}>
                     {color.toUpperCase()}
@@ -34,7 +30,7 @@ const TodoListItem = ({ todo }) => {
                         type="checkbox"
                         checked={completed}
                         readOnly={true}
-                        onClick={() => dispatch(markCompleted(id, completed))}
+                        onClick={() => dispatch(markCompleted({ id, completed }))}
                     />
                     <div className="todo-text">{text}</div>
                 </div>
@@ -42,17 +38,16 @@ const TodoListItem = ({ todo }) => {
                 <div className="segment buttons">
                     <select
                         className="colorPicker"
-                        value={todo.color}
-                        onChange={colorSetter}
-                        style={{ color: todo.color }}
+                        defaultValue={color}
+                        onChange={e => setInputColor(e.target.value)}
+                        style={{ color: inputColor }}
                     >
-                        {displayColorOptions(colors)}
+                        {displayColorNames(setOfColors)}
                     </select>
 
                     <button
                         className="destroy"
                         onClick={() => {
-                            dispatch(deleteToDo(id))
                             console.log('cross')
                         }}
                     >
@@ -64,4 +59,4 @@ const TodoListItem = ({ todo }) => {
     )
 }
 
-export default React.memo(TodoListItem)
+export default TodoListItem
