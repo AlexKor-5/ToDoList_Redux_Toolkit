@@ -1,5 +1,5 @@
 function setOfColors() {
-    return ['', 'red', 'green', 'blue', 'orange', 'purple', 'brown']
+  return ['', 'red', 'green', 'blue', 'orange', 'purple', 'brown']
 }
 
 export default setOfColors()

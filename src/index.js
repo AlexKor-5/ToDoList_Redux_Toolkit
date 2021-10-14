@@ -6,10 +6,10 @@ import store from './MyApp/store'
 import MyApp from './MyApp/MyApp'
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <MyApp />
-        </Provider>
-    </React.StrictMode>,
-    document.getElementById('root')
+  <React.StrictMode>
+    <Provider store={store}>
+      <MyApp />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
 )

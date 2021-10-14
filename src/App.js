@@ -5,32 +5,32 @@ import TodoList from './features/todos/TodoList'
 import Footer from './features/footer/Footer'
 
 const obj = {
-    name: 'Alex',
-    surname: 'Kor'
+  name: 'Alex',
+  surname: 'Kor'
 }
 
 function App() {
-    return (
-        <div className="App">
-            <nav>
-                <section>
-                    <h1>Redux Fundamentals Example</h1>
-                    {obj.name}
-                    {obj.surname}
-                </section>
-            </nav>
-            <main>
-                <section className="medium-container">
-                    <h2>Todos</h2>
-                    <div className="todoapp">
-                        <Header />
-                        <TodoList />
-                        <Footer />
-                    </div>
-                </section>
-            </main>
-        </div>
-    )
+  return (
+    <div className="App">
+      <nav>
+        <section>
+          <h1>Redux Fundamentals Example</h1>
+          {obj.name}
+          {obj.surname}
+        </section>
+      </nav>
+      <main>
+        <section className="medium-container">
+          <h2>Todos</h2>
+          <div className="todoapp">
+            <Header />
+            <TodoList />
+            <Footer />
+          </div>
+        </section>
+      </main>
+    </div>
+  )
 }
 
 export default App

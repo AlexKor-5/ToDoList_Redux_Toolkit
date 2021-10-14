@@ -5,11 +5,11 @@ import filtersReducer from './reducerSilces/filtersSlice'
 import { logStore } from './enhancers/logStore'
 
 const store = configureStore({
-    reducer: {
-        todos: todosReducer,
-        input: inputReducer,
-        filters: filtersReducer
-    },
-    enhancers: [logStore]
+  reducer: {
+    todos: todosReducer,
+    input: inputReducer,
+    filters: filtersReducer
+  },
+  enhancers: [logStore]
 })
 export default store
