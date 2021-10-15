@@ -1,1 +1,5 @@
-export const statuses = ['All', 'Active', 'Completed']
+export const statuses = {
+  all: 'All',
+  active: 'Active',
+  completed: 'Completed'
+}

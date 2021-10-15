@@ -3,10 +3,10 @@ import { ReactComponent as TimesSolid } from './times-solid.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { setOfColors } from '../data-colors'
 import { addColor, markCompleted, removeTodo, selectByIdTodos } from '../reducerSlices/todosReducer'
-import { isArray, isObject, isString, isUndefined } from '../typeCheckers'
+import { isArray, isObject, isString } from '../typeCheckers'
 
 const TodoListItem = ({ id }) => {
-  console.log('TodolistItem render')
+  // console.log('TodolistItem render')
   const todo = useSelector(state => selectByIdTodos(state, id))
   const { text, color, completed } = todo
   const [inputColor, setInputColor] = useState(color)

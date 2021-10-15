@@ -20,6 +20,6 @@ export let initialToDosState = {
 }
 
 export let initialFiltersState = {
-  status: statuses[0],
+  status: statuses.all,
   colors: []
 }

@@ -4,7 +4,7 @@ import { markAllCompleted, removeCompleted, selectNumberOfRemainingTodos } from 
 import { statuses } from '../data-statuses'
 import { isArray, isString } from '../typeCheckers'
 import {
-  addCheckedColor,
+  checkColor,
   changeStatus,
   selectChosenColors,
   selectChosenStatus
@@ -44,7 +44,7 @@ const StatusFilter = () => {
   return (
     <div className="filters statusFilters">
       <h5>Filter by Status</h5>
-      <ul>{statusItems(statuses, chosenStatus)}</ul>
+      <ul>{statusItems(Object.values(statuses), chosenStatus)}</ul>
     </div>
   )
 }
@@ -59,13 +59,14 @@ const ColorFilters = () => {
     return set.map((color, index) => {
       if (color === '') return
       let checked = chosenColors.includes(color)
+
       return (
         <label key={index}>
           <input
             type="checkbox"
             name={color}
             defaultChecked={checked}
-            onChange={() => dispatch(addCheckedColor({ color, checked }))}
+            onChange={() => dispatch(checkColor({ color, checked }))}
           />
           <span className="color-block" style={{ backgroundColor: color }}>
             {''}
